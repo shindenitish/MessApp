@@ -1,0 +1,22 @@
+<ion-header no-border>
+  <ion-grid>
+    <ion-row align-items-end>
+      <ion-col col-2>
+      </ion-col>
+      <ion-col text-center col-8>
+        <h4>Upload Image</h4>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button icon-only clear (click)="closeModal()">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content padding class="sample-modal-page">
+  <div text-center>
+    <img class="uploadImage" [src]="imageUrl">
+    <button ion-button block (click)="uploadImage()">Choose Image</button>
+  </div>
+</ion-content>

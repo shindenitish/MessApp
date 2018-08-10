@@ -1,0 +1,24 @@
+page-upload-image-modal {
+  margin: 5%;
+  margin-top: 20%;
+  max-width: 90%;
+  max-height: 80%;
+  color: aliceblue;
+
+  .button {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-transform: none;
+  }
+
+  .sample-modal-page {
+    background: rgb(60, 48, 48);
+    border-radius: 1%;
+  }
+
+  .uploadImage {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 3%;
+  }
+}

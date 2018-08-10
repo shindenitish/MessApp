@@ -1,0 +1,51 @@
+page-address-modal {
+  margin-left: 5%;
+  margin-top: 10%;
+  max-width: 90%;
+  max-height: 90%;
+
+  .header{
+    color: aliceblue;
+  }
+
+  .sample-modal-page {
+    background: rgb(60, 48, 48);
+    border-radius: 1%;
+    color: aliceblue;
+  }
+
+  .button {
+    // margin-top: 5%;
+    // margin-bottom: 5%;
+    // margin-left: 5%;
+    text-transform: none;
+  }
+
+  .btn{
+    margin: 5%;
+  }
+
+  ion-label{
+    padding-left: 5%;
+  }
+
+  ion-item {
+    background-color: rgb(60, 48, 48)!important;
+
+    .item-inner {
+      background-color: white!important;
+      margin-right: 5%;
+
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .input.ng-dirty.ng-valid {
+      border-left: #5bec7f solid 2px;
+    }
+
+    .input.ng-dirty.ng-invalid {
+      border-left: #ec6a5b solid 2px;
+    }
+  }
+}

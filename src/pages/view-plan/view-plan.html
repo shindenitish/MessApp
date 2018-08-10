@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Plan Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding>
+    <div class="list-container">
+
+      <div class="item-container">
+        <div text-center>
+          <img class="item-image" src="assets/imgs/calendar.png">
+        </div>
+      </div>
+
+      <div class="item-container">
+        <div class="item-label">Plan</div>
+        <div class="item-data">{{ plan.planName }}</div>
+      </div>
+
+      <div class="item-container">
+        <div class="item-label">Meals</div>
+        <div class="item-data">
+          <div *ngFor="let slot of timings">
+            <div *ngIf="plan.planCategory[slot.mealCategory] == true; return">{{slot.mealCategory}} ( {{slot.startTime}} - {{slot.endTime}} )</div>
+          </div>
+          <!-- <span *ngIf="plan.planCategory.Breakfast">Breakfast</span><span *ngIf="plan.planCategory.Lunch"><span *ngIf="plan.planCategory.Breakfast">, </span>Lunch</span><span *ngIf="plan.planCategory.Dinner"><span *ngIf="plan.planCategory.Breakfast || plan.planCategory.Lunch">, </span>Dinner</span> -->
+        </div>
+      </div>
+
+      <div class="item-container">
+        <div class="item-label">Description</div>
+        <div class="item-data" style="white-space: pre-line;">{{ plan.description }}</div>
+      </div>
+
+      <div class="item-container">
+        <div class="item-label">Number of Coupons</div>
+        <div class="item-data">{{ plan.noOfCoupons }}</div>
+      </div>
+
+      <div class="item-container">
+        <div class="item-label">Rate (in Rupees)</div>
+        <div class="item-data">{{ plan.rate }}</div>
+      </div>
+    </div>
+    <button ion-button block (click)="buyPlan()">Buy Plan</button>
+  </ion-list>
+</ion-content>

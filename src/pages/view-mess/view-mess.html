@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!mess.messName">Mess Details</ion-title>
+    <ion-title *ngIf="mess.messName">{{ mess.messName }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="list-container">
+    <div text-center class="item-container">
+      <img class="item-image" *ngIf="mess.profilePic" [src]="mess.profilePic">
+    </div>
+
+    <ion-segment [(ngModel)]="tabs">
+      <ion-segment-button value="details">Details</ion-segment-button>
+      <ion-segment-button value="plans">Plans</ion-segment-button>
+      <ion-segment-button value="menus">Menus</ion-segment-button>
+      <ion-segment-button value="reviews">Reviews</ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="tabs">
+      <div *ngSwitchCase="'details'">
+        <div class="item-container">
+          <div class="item-label">Mess Name</div>
+          <div class="item-data">{{ mess.messName }}</div>
+        </div>
+
+        <div class="item-container">
+          <div class="item-label">Owner Name</div>
+          <div class="item-data">{{mess.userName}}</div>
+        </div>
+
+        <div class="item-container">
+          <div class="item-label">Email</div>
+          <div class="item-data">{{mess.email}}</div>
+        </div>
+
+        <div class="item-container">
+          <div class="item-label">Contact</div>
+          <div class="item-data">{{mess.contact}}</div>
+        </div>
+
+        <div *ngIf="mess.address" class="item-container">
+          <div class="item-label">Address</div>
+          <div class="item-data">{{mess.address.address}}
+            <span *ngIf="mess.address.address">, </span>{{mess.address.city}}</div>
+        </div>
+
+        <div class="item-container">
+          <div class="item-label">Description</div>
+          <div class="item-data" style="white-space: pre-line;">{{ mess.description }}</div>
+        </div>
+
+        <div class="item-container">
+          <div class="item-label">Working Days</div>
+          <div class="item-data">{{workDays}}</div>
+        </div>
+
+        <div class="item-container">
+          <div class="item-label">Timings</div>
+          <div *ngFor="let slot of timings" class="item-data">{{slot.mealCategory}} ( {{slot.startTime}} - {{slot.endTime}} )</div>
+        </div>
+        <div *ngIf="status === -1" class="item-container" text-center>
+          <button ion-button outline (click)="updateMembership(0, isNew)">Request Membership</button>
+        </div>
+        <div *ngIf="status === 0" class="item-container" text-center>
+          <button ion-button outline (click)="updateMembership(-1, isNew)">Cancel Membership Request</button>
+        </div>
+        <div *ngIf="status === 1" class="item-container" text-center>
+          <button ion-button outline (click)="confirmLeave()">Leave Mess</button>
+        </div>
+      </div>
+      <div *ngSwitchCase="'plans'">
+        <ion-item *ngFor="let plan of plans | async" (click)="viewPlan(plan)" no-lines>
+          <ion-thumbnail item-start>
+            <img src="assets/imgs/calendar.png">
+          </ion-thumbnail>
+          <h2 class="plan-name">{{plan.planName}}</h2>
+          <p>{{plan.rate}} Rupees</p>
+          <p>{{plan.noOfCoupons}} coupons</p>
+          <!-- <button ion-button outline item-end>Buy</button> -->
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ion-content>

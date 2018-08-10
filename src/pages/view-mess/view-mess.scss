@@ -1,0 +1,44 @@
+page-view-mess {
+  .list-container{
+    margin: 2%;
+    border: 1px solid rgb(241, 237, 237);
+    border-radius: 5px;
+  }
+
+  .item-container{
+    margin: 3%;
+  }
+
+  .segment-button {
+    border-color: rgb(241, 237, 237)!important;
+    color: rgb(160, 48, 48)!important;
+
+  }
+
+  .segment-button.segment-activated {
+    color: #fff;
+    background-color: rgb(255, 220, 220)!important;
+  }
+
+  .item-label{
+    font-size: small;
+    color: rgb(160, 48, 48);
+  }
+
+  .item-data{
+    // white-space: pre-wrap;
+    font-size: medium;
+  }
+
+  .item-image{
+    max-width: 50%;
+    max-height: 50%;
+    border-radius: 5%;
+  }
+
+  .plan-name{
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(120, 48, 48);
+  }
+}

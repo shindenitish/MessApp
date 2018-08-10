@@ -1,0 +1,20 @@
+page-messtab {
+    ion-card{
+        margin: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+      }
+    
+      .card-img{
+        max-height: 100%;
+        max-width: 100%;
+      }
+    
+      .card-title {
+        margin-top: 23%;
+        margin-bottom: 23%;
+        font-size: 130%;
+        font-weight: bold;
+        color: rgb(236, 132, 118);
+      }
+}

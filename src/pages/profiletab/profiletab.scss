@@ -1,0 +1,123 @@
+page-profiletab {
+  ion-avatar img {
+    margin-top: 0%;
+    margin: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 150px !important;
+    max-height: 150px !important;
+  }
+
+  .button {
+    text-transform: none;
+    margin-top:5%;
+  }
+
+  ion-list {
+    ion-label {
+      padding-left: 2px;
+    }
+
+    ion-item {
+      background: rgb(241, 237, 237) !important;
+
+      .item-inner {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .defaultAddress{
+    // color: #488aff;
+    font-size: 100%;
+  }
+
+  .address-buttons{
+    color: #488aff;
+    font-size: small;
+    margin-top: 7%;
+    margin-bottom: 7%;
+  }
+
+  .address-container {
+    // border: 1px solid rgb(241, 237, 237)  ;
+    // border-radius: 1px;
+  }
+
+  .address-data {
+    padding-left:2%;
+    font-size: medium;
+    padding-bottom: 2px;
+    white-space: pre-line;
+  }
+
+  .address-list {
+    margin-top:5%;
+    margin-bottom:5%;
+  }
+
+  .address-list-label {
+    padding-left: 2px;
+    display: inline;
+    font-size: small;
+  }
+
+  .address-list-data {
+    vertical-align: middle;
+    padding-top: 10px;
+    font-size: medium;
+  }
+
+  .addIcon {
+    float: right;
+    padding-right: 2px;
+    font-size: 150%;
+  }
+
+  .removeIcon {
+    font-size: 140%;
+    color: brown;
+  }
+
+  .container{
+    border: 1px solid rgb(241, 237, 237);
+    margin: 3%;
+    margin-bottom: 0%;
+    border-radius: 5px;
+  }
+
+  .item-container:not(:first-child){
+    margin-top: 3%;
+  }
+
+  .item-container:first-child{
+    margin-top: 2%;
+  }
+
+  .item-container:last-child{
+    margin-bottom: 2%;
+  }
+
+  .item-label{
+    padding:2%;
+    font-size: smaller;
+    color: rgb(160, 48, 48);
+  }
+
+  .item-data{
+    // text-align: justify;
+    white-space: pre-line;
+    // white-space: pre-wrap;
+    padding-left:2%;
+    font-size: medium;
+  }
+
+  .button-container{
+    padding: 3%;
+  }
+
+  .button{
+    border-radius: 5px;
+  }
+}

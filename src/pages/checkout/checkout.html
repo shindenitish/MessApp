@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form #checkout="ngForm">
+      <ion-item class="plan-container" no-lines>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/calendar.png">
+        </ion-thumbnail>
+        <div class="plan-name">{{plan.planName}} Plan</div>
+        <div class="plan-rate">{{plan.rate}} Rupees</div>
+        <div class="plan-coupons">{{plan.noOfCoupons}} Coupons</div>
+      </ion-item>
+
+      <ion-item class="start-date" no-lines>
+        <ion-label>Start Date</ion-label>
+        <ion-datetime name="startDate" [min]="startDate" [(ngModel)]="startDate" displayFormat="DDD, DD-MMM-YYYY" required></ion-datetime>
+      </ion-item>
+
+      <div class="payment-mode-container">
+        <ion-list class="payment-mode-list" name="paymentMode" [(ngModel)]="paymentMode" radio-group no-lines required>
+          <ion-item>
+            <ion-label>Cash</ion-label>
+            <ion-radio value="cash"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Debit Card (Unavailable)</ion-label>
+            <ion-radio value="debit" [disabled]="true"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Net Banking (Unavailable)</ion-label>
+            <ion-radio value="paytm" [disabled]="true"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <br />
+
+      <div class="bill">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>Subtotal</ion-col>
+            <ion-col col-4></ion-col>
+            <ion-col col-2 text-right>{{plan.rate}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>Tax</ion-col>
+            <ion-col col-3></ion-col>
+            <ion-col col-3 text-right>{{tax}}</ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <hr>
+
+        <ion-row class="total-sum">
+          <ion-col col-6>Total</ion-col>
+          <ion-col col-1></ion-col>
+          <ion-col col-5 text-right>Rs. {{plan.rate}}</ion-col>
+        </ion-row>
+      </div>
+      <button ion-button block (click)="checkOut()" [disabled]="!checkout.valid">Checkout</button>
+    </form>
+  </ion-list>
+</ion-content>
