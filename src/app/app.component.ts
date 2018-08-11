@@ -1,55 +1,22 @@
-import firebase from "firebase";
+import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { Subscription } from 'rxjs/Subscription';
-import { AngularFireAuth } from "angularfire2/auth";
+import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthenticationProvider } from '../providers/authentication/authentication';
 
-import { TabsPage } from '../pages/tabs/tabs';
+import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp implements OnInit, OnDestroy {
+export class MyApp {
+  rootPage:any = LoginPage;
 
-  private rootPage: any;
-  private sub: Subscription;
-  private firestore = firebase.firestore();
-  private settings = { timestampsInSnapshots: true };
-
-  constructor(private authProvider: AuthenticationProvider, private afAuth: AngularFireAuth, platform: Platform, splashScreen: SplashScreen) {
-    this.firestore.settings(this.settings);
-
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
+      statusBar.styleDefault();
       splashScreen.hide();
     });
   }
-
-  ngOnInit() {
-    this.sub = this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        if (user.emailVerified) {
-          user.getIdToken().then((token) => {
-            const userInfo = JSON.parse(atob(token.split('.')[1]));
-
-            if (userInfo['user_type'] === 0) {
-              this.rootPage = TabsPage;
-            } else {
-              this.rootPage = LoginPage;
-            }
-          });
-        } else {
-          this.rootPage = LoginPage;
-        }
-      } else {
-        this.rootPage = LoginPage;
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
 }
+

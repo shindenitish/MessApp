@@ -1,119 +1,55 @@
-import { MyApp } from './app.component';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { HometabPage } from '../pages/hometab/hometab';
-import { MesstabPage } from '../pages/messtab/messtab';
-import { AlerttabPage } from '../pages/alerttab/alerttab';
-import { CheckoutPage } from '../pages/checkout/checkout';
-import { ListMessPage } from '../pages/list-mess/list-mess';
-import { ViewMessPage } from '../pages/view-mess/view-mess';
-import { ViewPlanPage } from '../pages/view-plan/view-plan';
-import { ProfiletabPage } from '../pages/profiletab/profiletab';
-import { ExploretabPage } from '../pages/exploretab/exploretab';
-
-
-import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
-import { ResetPasswordPage } from '../pages/reset-password/reset-password';
-
-import { Camera } from '@ionic-native/camera';
-import { StatusBar } from '@ionic-native/status-bar';
-import { GooglePlus } from '@ionic-native/google-plus';
-import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { DatePicker } from '@ionic-native/date-picker';
 
-import { ElasticModule } from 'ng-elastic';
-
-import { AddressModalPage } from '../pages/address-modal/address-modal';
-import { UploadImageModalPage } from '../pages/upload-image-modal/upload-image-modal';
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { DatePipe } from '@angular/common'
 
 
-import { ComponentsModule } from '../components/components.module'
-import { AuthenticationProvider } from '../providers/authentication/authentication';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC_KeK56MdvteYU96PocSxfAaOgO9aVBSI",
-  authDomain: "mymess-11f8c.firebaseapp.com",
-  databaseURL: "https://mymess-11f8c.firebaseio.com",
-  projectId: "mymess-11f8c",
-  storageBucket: "mymess-11f8c.appspot.com",
-  messagingSenderId: "201921251715"
-}
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { RestProvider } from '../providers/rest/rest';
+
+import { LoginPage } from '../pages/login/login';
+import { AddUserPage } from '../pages/adduser/adduser';
+import { EditUserPage } from '../pages/edit-user/edit-user';
 
 @NgModule({
   declarations: [
     MyApp,
-
-    HometabPage,
-    MesstabPage,
-    AlerttabPage,
-    ProfiletabPage,
-    ExploretabPage,
-
-    TabsPage,
+    HomePage,
     LoginPage,
-    CheckoutPage,
-    ListMessPage,
-    ViewMessPage,
-    ViewPlanPage,
-    RegisterPage,
-    ResetPasswordPage,
-
-    AddressModalPage,
-    UploadImageModalPage
+    AddUserPage,
+    EditUserPage,
   ],
   imports: [
     BrowserModule,
-
-    ElasticModule,
-    ComponentsModule,
-
-    AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence(),
-    AngularFireModule.initializeApp(firebaseConfig),
-
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
-    HometabPage,
-    MesstabPage,
-    AlerttabPage,
-    ExploretabPage,
-    ProfiletabPage,
-
-    TabsPage,
+    HomePage,
     LoginPage,
-    CheckoutPage,
-    ListMessPage,
-    ViewMessPage,
-    ViewPlanPage,
-    RegisterPage,
-    ResetPasswordPage,
-
-    AddressModalPage,
-    UploadImageModalPage
+    AddUserPage,
+    EditUserPage,
   ],
   providers: [
-    Camera,
+    DatePipe,
     StatusBar,
-    GooglePlus,
+    DatePicker,
     SplashScreen,
-
-    AuthenticationProvider,
-
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    RestProvider
   ]
 })
-export class AppModule { }
+export class AppModule {}
