@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Drivers List
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addDriver()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item *ngFor="let driver of drivers; let i = index">
+      <h2>{{driver.firstName}} {{driver.lastName}}</h2>
+      <p>{{driver.email}}</p>
+      <p>{{driver.contact}}</p>
+      <button ion-button clear item-end (click)="editDriver(i)">Edit</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

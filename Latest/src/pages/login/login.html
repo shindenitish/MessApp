@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Driver Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+      <ion-label stacked>Email</ion-label>
+      <ion-item>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <p *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+        Enter a valid email id
+      </p>
+
+      <ion-label Stacked>Password</ion-label>
+      <ion-item>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <p *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+        Weak password (min. 6 characters)
+      </p>
+
+      <button margin-top ion-button block type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+</ion-content>

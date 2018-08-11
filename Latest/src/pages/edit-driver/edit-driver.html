@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Edit Driver</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="userForm" (ngSubmit)="saveUser()" novalidate>
+    <ion-label stacked>First Name</ion-label>
+    <ion-item>
+      <ion-input formControlName="firstName" type="text"></ion-input>
+    </ion-item>
+    <p *ngIf="!userForm.controls.firstName.valid  && userForm.controls.firstName.dirty">
+      Enter a valid first name
+    </p>
+
+    <ion-label stacked>Last Name</ion-label>
+    <ion-item>
+      <ion-input formControlName="lastName" type="text"></ion-input>
+    </ion-item>
+    <p *ngIf="!userForm.controls.lastName.valid  && userForm.controls.lastName.dirty">
+      Enter a valid last name
+    </p>
+
+    <ion-label stacked>Birth Date</ion-label>
+    <ion-item no-lines>
+      <ion-label>Select Date</ion-label>
+        <ion-datetime formControlName="dob" max="{{max}}" displayFormat="DDD, DD-MMM-YYYY" required></ion-datetime>
+    </ion-item>
+    <p *ngIf="!userForm.controls.dob.valid  && userForm.controls.dob.dirty">
+      Enter a valid birth date
+    </p>
+
+    <ion-label stacked>Email</ion-label>
+    <ion-item>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <p *ngIf="!userForm.controls.email.valid  && userForm.controls.email.dirty">
+      Enter a valid email id
+    </p>
+
+    <ion-label stacked>Phone Number</ion-label>
+    <ion-item>
+      <ion-input formControlName="contact" type="number"></ion-input>
+    </ion-item>
+    <p *ngIf="!userForm.controls.contact.valid  && userForm.controls.contact.dirty">
+      Enter a valid 10 digits phone number
+    </p>
+
+    <ion-label stacked>License Number</ion-label>
+    <ion-item>
+      <ion-input formControlName="licenseNo" type="number"></ion-input>
+    </ion-item>
+    <p *ngIf="!userForm.controls.licenseNo.valid  && userForm.controls.licenseNo.dirty">
+      Enter a valid license number
+    </p>
+
+    <ion-label stacked>License Expiry Date</ion-label>
+    <ion-item  no-lines>
+      <ion-label>Select Date</ion-label>
+        <ion-datetime formControlName="licenseDate" max="2200-12-31" displayFormat="DDD, DD-MMM-YYYY" required></ion-datetime>
+    </ion-item>
+    <p *ngIf="!userForm.controls.licenseDate.valid  && userForm.controls.licenseDate.dirty">
+      Enter a valid expiry date
+    </p>
+
+    <button ion-button margin-top block type="submit" [disabled]="!userForm.valid">Save Details</button>
+  </form>
+</ion-content>
